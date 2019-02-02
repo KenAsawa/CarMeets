@@ -3,10 +3,10 @@ import 'package:intl/intl.dart';
 
 import 'event_details.dart';
 
-class EventPageDetails extends StatelessWidget {
+class EventPage extends StatelessWidget {
   EventDetails _eventDetails;
 
-  EventPageDetails(this._eventDetails);
+  EventPage(this._eventDetails);
 
   @override
   Widget build(BuildContext context) =>

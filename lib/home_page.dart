@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import './placeholder.dart';
 import 'event_details.dart';
-import 'event_page_details_info.dart';
+import 'event_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

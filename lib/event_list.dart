@@ -4,7 +4,7 @@ class EventList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
+    return RefreshIndicator(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
         physics: BouncingScrollPhysics(),
@@ -13,7 +13,13 @@ class EventList extends StatelessWidget {
           return buildCard(context);
         },
       ),
+      onRefresh: refreshList,
     );
+  }
+
+  Future<Null> refreshList() async {
+    //network call and setState so that view will render the new values
+    print("refresh");
   }
 
   Widget buildCard(BuildContext context) {
