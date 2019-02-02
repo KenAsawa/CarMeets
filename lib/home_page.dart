@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './placeholder.dart';
+import './event_page_hero_image.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    PlaceHolder(Colors.greenAccent),
+    EventPageHeroImage(),
     PlaceHolder(Colors.lightBlueAccent),
     PlaceHolder(Colors.redAccent)
   ];
@@ -22,15 +23,19 @@ class _HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _children[_currentIndex],
-      bottomNavigationBar:
-          BottomNavigationBar(currentIndex: 0, onTap: onTabTapped, items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home), title: Text("Events Page")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.book), title: Text("Saved Events")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.settings), title: Text("Settings"))
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: onTabTapped,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text("Events"),
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.book), title: Text("Saved Events")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), title: Text("Settings"))
+          ]),
     );
   }
 
