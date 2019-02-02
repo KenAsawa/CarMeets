@@ -1,6 +1,12 @@
+import 'package:car_meets/event_details.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventList extends StatelessWidget {
+  final List<EventDetails> eventDetails;
+
+  const EventList(this.eventDetails);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -10,7 +16,7 @@ class EventList extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
-          return buildCard(context);
+          return buildCard(context, index);
         },
       ),
       onRefresh: refreshList,
@@ -22,18 +28,18 @@ class EventList extends StatelessWidget {
     print("refresh");
   }
 
-  Widget buildCard(BuildContext context) {
+  Widget buildCard(BuildContext context, int index) {
     return Card(
       elevation: 8.0,
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
         decoration: BoxDecoration(color: Color.fromRGBO(64, 74, 96, 0.9)),
-        child: buildListTile(context),
+        child: buildListTile(context, index),
       ),
     );
   }
 
-  Widget buildListTile(BuildContext context) {
+  Widget buildListTile(BuildContext context, int index) {
     return ListTile(
       contentPadding: EdgeInsets.fromLTRB(10, 20, 20, 20),
       leading: Container(
@@ -49,19 +55,17 @@ class EventList extends StatelessWidget {
         height: 90.0,
       ),
       title: Text(
-        "UTD Car Club",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
+        eventDetails[index].title,
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
       ),
       subtitle: Row(
         children: <Widget>[
           Icon(
-            Icons.linear_scale,
-            color: Colors.greenAccent[400],
+            Icons.alarm,
+            color: Colors.black,
           ),
-          Text(
-            " Feb 2 Sat. 1-2PM",
-            style: TextStyle(color: Colors.white, fontSize: 19.0),
-          )
+          timeDetails(eventDetails[index])
         ],
       ),
       trailing: Icon(
@@ -70,5 +74,28 @@ class EventList extends StatelessWidget {
         size: 30.0,
       ),
     );
+  }
+
+  Widget timeDetails(EventDetails _eventDetails) {
+    var startTimeFormat = _timeFormat(_eventDetails.startTime);
+    var endTimeFormat = _timeFormat(_eventDetails.endTime);
+    return Row(
+      children: <Widget>[
+        Text(
+          DateFormat("EEEE, MMMM d, y 'at' $startTimeFormat - ")
+                  .format(_eventDetails.startTime) +
+              DateFormat(endTimeFormat).format(_eventDetails.endTime),
+          style: TextStyle(color: Colors.white, fontSize: 19.0),
+        )
+      ],
+    );
+  }
+
+  String _timeFormat(DateTime time) {
+    var format = "K:m a";
+    if (time.minute == 0) {
+      format = "K a";
+    }
+    return format;
   }
 }

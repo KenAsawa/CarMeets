@@ -1,5 +1,14 @@
-import 'package:meta/meta.dart';
 import "dart:math";
+
+import 'package:meta/meta.dart';
+
+List<EventDetails> randomEvents(int amount) {
+  List<EventDetails> events = [];
+  for (int i = 0; i < amount; i++) {
+    events.add(randomEvent());
+  }
+  return events;
+}
 
 EventDetails randomEvent() {
   var titles = [

@@ -1,6 +1,7 @@
-import 'package:car_meets/event_list.dart';
 import 'package:flutter/material.dart';
 
+import './event_details.dart';
+import './event_list.dart';
 import './placeholder.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    EventList(),
+    EventList(randomEvents(10)),
     PlaceHolder(Colors.lightBlueAccent),
     PlaceHolder(Colors.redAccent)
   ];

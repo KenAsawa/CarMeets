@@ -4,21 +4,20 @@ import 'package:intl/intl.dart';
 import 'event_details.dart';
 
 class EventPage extends StatelessWidget {
-  EventDetails _eventDetails;
+  final EventDetails _eventDetails;
 
   EventPage(this._eventDetails);
 
   @override
-  Widget build(BuildContext context) =>
-      Container(
+  Widget build(BuildContext context) => Container(
           child: Column(
-            children: <Widget>[
-              SizedBox(height: 20),
-              titleDetails(),
-              Divider(height: 30),
-              timeDetails(),
-            ],
-          ));
+        children: <Widget>[
+          SizedBox(height: 20),
+          titleDetails(),
+          Divider(height: 30),
+          timeDetails(),
+        ],
+      ));
 
   Widget timeDetails() {
     var startTimeFormat = _timeFormat(_eventDetails.startTime);
@@ -29,7 +28,9 @@ class EventPage extends StatelessWidget {
         Icon(Icons.alarm),
         SizedBox(width: 10),
         Text(
-          DateFormat("EEEE, MMMM d, y 'at' $startTimeFormat - ").format(_eventDetails.startTime) + DateFormat(endTimeFormat).format(_eventDetails.endTime),
+          DateFormat("EEEE, MMMM d, y 'at' $startTimeFormat - ")
+                  .format(_eventDetails.startTime) +
+              DateFormat(endTimeFormat).format(_eventDetails.endTime),
           style: TextStyle(fontSize: 17),
         )
       ],
@@ -44,14 +45,16 @@ class EventPage extends StatelessWidget {
     return format;
   }
 
-  Widget titleDetails() =>
-      Row(
+  Widget titleDetails() => Row(
         children: <Widget>[
           SizedBox(width: 10),
           Column(
             children: <Widget>[
               Text(
-                DateFormat.MMMM().format(_eventDetails.startTime).substring(0, 3).toUpperCase(),
+                DateFormat.MMMM()
+                    .format(_eventDetails.startTime)
+                    .substring(0, 3)
+                    .toUpperCase(),
                 style: TextStyle(fontSize: 20, color: Colors.red),
               ),
               SizedBox(height: 10),
