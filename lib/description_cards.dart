@@ -48,7 +48,12 @@ class _DescriptionCardsState extends State<DescriptionCards> {
               padding:
                   new EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
               child: secondHalf.isEmpty
-                  ? new Text(firstHalf)
+                  ? new Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        new Text(firstHalf),
+                      ],
+                    )
                   : new Column(
                       children: <Widget>[
                         new Text(flag
