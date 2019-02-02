@@ -2,8 +2,6 @@ import 'package:car_meets/event_list.dart';
 import 'package:flutter/material.dart';
 
 import './placeholder.dart';
-import 'event_details.dart';
-import 'event_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,15 +25,27 @@ class _HomeState extends State<HomePage> {
       appBar: buildAppBar(),
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       body: _children[_currentIndex],
-      bottomNavigationBar:
-          BottomNavigationBar(currentIndex: _currentIndex, onTap: onTabTapped, items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home), title: Text("Events Page")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.book), title: Text("Saved Events")),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.settings), title: Text("Settings"))
-      ]),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+            // sets the background color of the `BottomNavigationBar`
+            canvasColor: Color.fromRGBO(58, 66, 86, 1.0),
+            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+            primaryColor: Colors.white,
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(caption: new TextStyle(color: Colors.grey))),
+        child: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: onTabTapped,
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home), title: Text("Events Page")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.book), title: Text("Saved Events")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.settings), title: Text("Settings"))
+            ]),
+      ),
     );
   }
 
