@@ -35,30 +35,32 @@ class EventList extends StatelessWidget {
 
   Widget buildListTile(BuildContext context) {
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      contentPadding: EdgeInsets.fromLTRB(10, 20, 20, 20),
       leading: Container(
         padding: EdgeInsets.only(right: 12.0),
         decoration: BoxDecoration(
             border:
-                Border(right: BorderSide(width: 1.0, color: Colors.white24))),
-        child: Icon(
-          Icons.autorenew,
-          color: Colors.white,
+                Border(right: BorderSide(width: 2.0, color: Colors.white24))),
+        child: Image.asset(
+          "assets/images/food.jpg",
+          fit: BoxFit.cover,
         ),
+        width: 120.0,
+        height: 90.0,
       ),
       title: Text(
-        "Event Number 1",
-        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        "UTD Car Club",
+        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
       ),
       subtitle: Row(
         children: <Widget>[
           Icon(
             Icons.linear_scale,
-            color: Colors.yellowAccent,
+            color: Colors.greenAccent[400],
           ),
           Text(
             " Feb 2 Sat. 1-2PM",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 19.0),
           )
         ],
       ),
