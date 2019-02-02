@@ -15,7 +15,11 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    EventPageDetails(EventDetails("Saran's Killing", DateTime(2019, 2, 2, 20, 0), DateTime(2019, 2, 2, 22, 30), "UTD")),
+    EventPageDetails(EventDetails(
+        title: "Saran's Killing",
+        startTime: DateTime(2019, 2, 2, 20, 0),
+        endTime: DateTime(2019, 2, 2, 22, 30),
+        location: "UTD")),
     PlaceHolder(Colors.lightBlueAccent),
     PlaceHolder(Colors.redAccent)
   ];
