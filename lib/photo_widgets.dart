@@ -10,9 +10,9 @@ class Slideshow extends StatelessWidget {
 }
 
 class SlidingPhotoGallery extends StatelessWidget {
-  Image _image1 = Image.asset('assets/images/test.jpg');
-  Image _image2 = Image.asset('assets/images/test2.jpg');
-  Image _image3 = Image.asset('assets/images/test3.jpg');
+  final Image _image1 = Image.asset('assets/images/test.jpg');
+  final Image _image2 = Image.asset('assets/images/test2.jpg');
+  final Image _image3 = Image.asset('assets/images/test3.jpg');
 
   @override
   Widget build(BuildContext context) {
