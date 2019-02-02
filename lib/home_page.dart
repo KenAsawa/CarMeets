@@ -2,6 +2,8 @@ import 'package:car_meets/event_list.dart';
 import 'package:flutter/material.dart';
 
 import './placeholder.dart';
+import 'event_details.dart';
+import 'event_page_details_info.dart';
 
 class HomePage extends StatefulWidget {
   @override
