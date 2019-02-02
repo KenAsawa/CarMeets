@@ -25,7 +25,7 @@ class _HomeState extends State<HomePage> {
     return Scaffold(
       body: _children[_currentIndex],
       bottomNavigationBar:
-          BottomNavigationBar(currentIndex: 0, onTap: onTabTapped, items: [
+          BottomNavigationBar(currentIndex: _currentIndex, onTap: onTabTapped, items: [
         BottomNavigationBarItem(
             icon: Icon(Icons.home), title: Text("Events Page")),
         BottomNavigationBarItem(
