@@ -2,6 +2,8 @@ import 'package:car_meets/event_details.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import './string_utils.dart';
+
 class EventList extends StatelessWidget {
   final List<EventDetails> eventDetails;
 
@@ -9,7 +11,6 @@ class EventList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return RefreshIndicator(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -59,15 +60,7 @@ class EventList extends StatelessWidget {
         style: TextStyle(
             color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
       ),
-      subtitle: Row(
-        children: <Widget>[
-          Icon(
-            Icons.alarm,
-            color: Colors.black,
-          ),
-          timeDetails(eventDetails[index])
-        ],
-      ),
+      subtitle: timeDetails(eventDetails[index]),
       trailing: Icon(
         Icons.keyboard_arrow_right,
         color: Colors.white,
@@ -77,25 +70,25 @@ class EventList extends StatelessWidget {
   }
 
   Widget timeDetails(EventDetails _eventDetails) {
-    var startTimeFormat = _timeFormat(_eventDetails.startTime);
-    var endTimeFormat = _timeFormat(_eventDetails.endTime);
     return Row(
       children: <Widget>[
-        Text(
-          DateFormat("EEEE, MMMM d, y 'at' $startTimeFormat - ")
-                  .format(_eventDetails.startTime) +
-              DateFormat(endTimeFormat).format(_eventDetails.endTime),
-          style: TextStyle(color: Colors.white, fontSize: 19.0),
-        )
+        Container(
+            width: 75,
+            child: Text(
+              DateFormat("MMM d").format(_eventDetails.startTime),
+              style: TextStyle(color: Colors.white, fontSize: 19.0),
+            )),
+        SizedBox(
+          width: 20,
+        ),
+        Container(
+            alignment: AlignmentDirectional.centerEnd,
+            child: Text(
+              DateFormat(timeFormat(_eventDetails.startTime))
+                  .format(_eventDetails.startTime),
+              style: TextStyle(color: Colors.white, fontSize: 19.0),
+            ))
       ],
     );
-  }
-
-  String _timeFormat(DateTime time) {
-    var format = "K:m a";
-    if (time.minute == 0) {
-      format = "K a";
-    }
-    return format;
   }
 }

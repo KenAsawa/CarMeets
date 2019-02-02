@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'event_details.dart';
+import './event_details.dart';
+import './string_utils.dart';
 
 class EventPage extends StatelessWidget {
   final EventDetails _eventDetails;
@@ -20,8 +21,8 @@ class EventPage extends StatelessWidget {
       ));
 
   Widget timeDetails() {
-    var startTimeFormat = _timeFormat(_eventDetails.startTime);
-    var endTimeFormat = _timeFormat(_eventDetails.endTime);
+    var startTimeFormat = timeFormat(_eventDetails.startTime);
+    var endTimeFormat = timeFormat(_eventDetails.endTime);
     return Row(
       children: <Widget>[
         SizedBox(width: 10),
@@ -35,14 +36,6 @@ class EventPage extends StatelessWidget {
         )
       ],
     );
-  }
-
-  String _timeFormat(DateTime time) {
-    var format = "K:m a";
-    if (time.minute == 0) {
-      format = "K a";
-    }
-    return format;
   }
 
   Widget titleDetails() => Row(
