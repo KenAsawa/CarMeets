@@ -44,10 +44,7 @@ class EventList extends StatelessWidget {
     return ListTile(
       contentPadding: EdgeInsets.fromLTRB(10, 20, 20, 20),
       leading: Container(
-        padding: EdgeInsets.only(right: 12.0),
-        decoration: BoxDecoration(
-            border:
-                Border(right: BorderSide(width: 2.0, color: Colors.white24))),
+        padding: EdgeInsets.only(right: 0),
         child: Image.asset(
           "assets/images/food.jpg",
           fit: BoxFit.cover,
@@ -61,11 +58,17 @@ class EventList extends StatelessWidget {
             color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22.0),
       ),
       subtitle: timeDetails(eventDetails[index]),
-      trailing: Icon(
-        Icons.keyboard_arrow_right,
-        color: Colors.white,
-        size: 30.0,
-      ),
+      trailing: Container(
+          padding: EdgeInsets.fromLTRB(5.0, 0, 0, 0),
+          height: 100.0,
+          child: Icon(
+            Icons.keyboard_arrow_right,
+            color: Colors.white,
+            size: 30.0,
+          ),
+          decoration: BoxDecoration(
+              border:
+                  Border(left: BorderSide(width: 2.0, color: Colors.white24)))),
     );
   }
 
@@ -73,20 +76,18 @@ class EventList extends StatelessWidget {
     return Row(
       children: <Widget>[
         Container(
+            padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
             width: 75,
             child: Text(
               DateFormat("MMM d").format(_eventDetails.startTime),
-              style: TextStyle(color: Colors.white, fontSize: 19.0),
+              style: TextStyle(color: Colors.white70, fontSize: 20.0),
             )),
-        SizedBox(
-          width: 20,
-        ),
         Container(
-            alignment: AlignmentDirectional.centerEnd,
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
             child: Text(
               DateFormat(timeFormat(_eventDetails.startTime))
                   .format(_eventDetails.startTime),
-              style: TextStyle(color: Colors.white, fontSize: 19.0),
+              style: TextStyle(color: Colors.white, fontSize: 19.0,  fontWeight: FontWeight.bold),
             ))
       ],
     );
