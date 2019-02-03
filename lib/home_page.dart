@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import './event_details.dart';
 import './event_list.dart';
 import './placeholder.dart';
+import './event_map.dart';
 
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _HomeState();
   }
 }
@@ -16,7 +16,10 @@ class _HomeState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     EventList(randomEvents(10)),
-    PlaceHolder(Colors.lightBlueAccent),
+    Padding(
+      child: EventMap(),
+      padding: EdgeInsets.only(top: 50),
+    ),
     PlaceHolder(Colors.redAccent)
   ];
 
