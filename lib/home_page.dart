@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './event_details.dart';
 import './event_list.dart';
 import './placeholder.dart';
+import './event_page_hero_image.dart';
 import './event_map.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeState extends State<HomePage> {
       child: EventMap(),
       padding: EdgeInsets.only(top: 50),
     ),
-    PlaceHolder(Colors.redAccent)
+    EventPageHeroImage(),
   ];
 
   @override
